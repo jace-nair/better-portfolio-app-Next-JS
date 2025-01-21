@@ -1,3 +1,5 @@
+"use client";
+
 import Image from "next/image";
 import imageMemojiComputer from "@/assets/images/memoji-computer.png";
 import IconArrowDown from "@/assets/icons/arrow-down.svg";
@@ -6,11 +8,23 @@ import grainImage from "@/assets/images/grain.jpg";
 import IconStar from "@/assets/icons/star.svg";
 import IconSparkle from "@/assets/icons/sparkle.svg";
 import { HeroOrbit } from "@/components/HeroOrbit";
+import { useInView } from "react-intersection-observer";
+import { useActiveSectionContext } from "@/contexts/ActiveSectionContextProvider";
+import { useEffect } from "react";
 
 export const HeroSection = () => {
 
+    const {ref, inView} = useInView();
+    const {setActiveSection} = useActiveSectionContext();
+
+    useEffect(() => {
+      if (inView) {
+      setActiveSection("Home");
+    }
+    }, [inView]);
+
     return(
-        <div className="py-32 md:py-48 lg:py-60 relative z-0 overflow-x-clip" id="home">
+        <div className="py-32 md:py-48 lg:py-60 relative z-0 overflow-x-clip" id="home" ref={ref}>
             <div className="absolute inset-0">
                 <div className="absolute inset-0 -z-30 opacity-5" style={{
                     backgroundImage: `url(${grainImage.src})`

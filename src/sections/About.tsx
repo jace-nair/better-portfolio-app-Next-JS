@@ -1,3 +1,5 @@
+"use client";
+
 import { SectionHeader } from "@/components/SectionHeader";
 import { Card } from "@/components/Card";
 import { TechIcon } from "@/components/TechIcon";
@@ -25,6 +27,9 @@ import GithubIcon from "@/assets/icons/github.svg";
 import mapImage from "@/assets/images/map.png";
 import smileMemoji from "@/assets/images/memoji-smile.png";
 import { ToolboxItems } from "@/components/ToolboxItems";
+import { useInView } from "react-intersection-observer";
+import { useActiveSectionContext } from "@/contexts/ActiveSectionContextProvider";
+import { useEffect } from "react";
 
 
 
@@ -99,8 +104,17 @@ const toolboxItems = [
 
 export const About = () => {
 
+    const {ref, inView} = useInView();
+    const {setActiveSection} = useActiveSectionContext();
+
+    useEffect(() => {
+      if (inView) {
+      setActiveSection("About");
+    }
+    }, [inView]);
+
     return(
-        <div className="py-24 lg:scroll-mt-[45rem]" id="about">
+        <div className="py-24 lg:scroll-mt-[45rem]" id="about" ref={ref}>
             <div className="container">
                 <SectionHeader eyebrow="About Me" title="A Glimpse Into My World" description="Learn more about who I am, what I do and what inspires me." />
                 <div className="mt-20 flex flex-col gap-8">

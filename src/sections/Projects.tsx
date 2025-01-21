@@ -1,3 +1,5 @@
+"use client";
+
 import darkSaasLandingPage from "@/assets/images/dark-saas-landing-page.png";
 import lightSaasLandingPage from "@/assets/images/light-saas-landing-page.png";
 import aiStartupLandingPage from "@/assets/images/ai-startup-landing-page.png";
@@ -7,6 +9,9 @@ import ArrowUpRightIcon from "@/assets/icons/arrow-up-right.svg";
 import grainImage from "@/assets/images/grain.jpg";
 import { SectionHeader } from "@/components/SectionHeader";
 import { Card } from "@/components/Card";
+import { useInView } from "react-intersection-observer";
+import { useActiveSectionContext } from "@/contexts/ActiveSectionContextProvider";
+import { useEffect } from "react";
 
 const portfolioProjects = [
     {
@@ -49,11 +54,21 @@ const portfolioProjects = [
 
 export const ProjectsSection = () => {
 
+    const {ref, inView} = useInView();
+    const {setActiveSection} = useActiveSectionContext();
+
+    useEffect(() => {
+      if (inView) {
+      setActiveSection("Projects");
+    }
+    }, [inView]);
+    
+
     return(
         <section className="pb-16 py-24" id="projects">
             <div className="container">
               <SectionHeader eyebrow="Real-World Results" title="Featured Projects" description="See how I transformed concepts into engaging digital experiences." />
-                <div className="flex flex-col mt-10 md:mt-20 gap-20">
+                <div className="flex flex-col mt-10 md:mt-20 gap-20" ref={ref}>
                     {portfolioProjects.map(
                         (project, projectIndex) => 
                         <Card key={project.title} className="px-8 pt-8 pb-0 md:pt-12 md:px-10 lg:pt-16 lg:px-20 sticky" style={{top: `calc(64px + ${projectIndex * 40}px)`,}}>

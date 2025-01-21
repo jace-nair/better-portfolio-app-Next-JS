@@ -1,3 +1,5 @@
+"use client";
+
 import ArrowUpRightIcon from "@/assets/icons/arrow-up-right.svg";
 import grainImage from "@/assets/images/grain.jpg";
 
@@ -8,6 +10,9 @@ import Image from "next/image";
 import CheckCircleIcon from "@/assets/icons/check-circle.svg";
 import { SectionHeader } from "@/components/SectionHeader";
 import { Card } from "@/components/Card";
+import { useInView } from "react-intersection-observer";
+import { useActiveSectionContext } from "@/contexts/ActiveSectionContextProvider";
+import { useEffect } from "react";
 
 const portfolioProjects = [
     {
@@ -26,8 +31,17 @@ const portfolioProjects = [
 
 export const Contact = () => {
 
+    const {ref, inView} = useInView();
+    const {setActiveSection} = useActiveSectionContext();
+
+    useEffect(() => {
+      if (inView) {
+      setActiveSection("Contact");
+    }
+    }, [inView]);
+
     return(
-        <div className="py-16 pt-12 lg:py-24 lg:pt-20" id="contact">
+        <div className="py-16 pt-12 lg:py-24 lg:pt-20" id="contact" ref={ref}>
             <div className="container">
                 <div className="bg-gradient-to-r from-emerald-300 to-sky-400 text-gray-900 py-8 px-10 rounded-3xl text-center md:text-left relative overflow-hidden z-0">
                     <div className="absolute inset-0 opacity-5 -z-10" style={{backgroundImage: `url(${grainImage.src})`}}></div>
