@@ -40,7 +40,7 @@ const testimonials = [
     text: "Alex's work on our website has been nothing short of exceptional. He's a talented developer who is also a great communicator. We highly recommend him.",
     avatar: memojiAvatar5,
   },
-];
+] as const;
 
 export const TestimonialsSection = () => {
   return (

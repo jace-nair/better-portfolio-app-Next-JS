@@ -971,6 +971,9 @@ video {
 .overflow-x-clip {
   overflow-x: clip;
 }
+.\!scroll-smooth {
+  scroll-behavior: smooth !important;
+}
 .rounded-3xl {
   border-radius: 1.5rem;
 }
@@ -1107,9 +1110,9 @@ video {
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
 }
-.py-20 {
-  padding-top: 5rem;
-  padding-bottom: 5rem;
+.py-24 {
+  padding-top: 6rem;
+  padding-bottom: 6rem;
 }
 .py-3 {
   padding-top: 0.75rem;
@@ -1489,6 +1492,10 @@ video {
 
   .lg\:max-w-none {
     max-width: none;
+  }
+
+  .lg\:scroll-mt-\[45rem\] {
+    scroll-margin-top: 45rem;
   }
 
   .lg\:grid-cols-2 {
