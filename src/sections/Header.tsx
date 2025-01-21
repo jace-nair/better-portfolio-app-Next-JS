@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import clsx from "clsx";
-import { useState } from "react";
+import { useActiveSectionContext } from "@/contexts/ActiveSectionContextProvider";
 
 const navLinks = [
     {
@@ -25,7 +25,7 @@ const navLinks = [
 
 export const Header = () => {
 
-    const [activeSection, setActiveSection] = useState("Home");
+    const {activeSection, setActiveSection} = useActiveSectionContext();
 
     return(
         <div className="flex justify-center items-center fixed top-3 w-full z-10">
