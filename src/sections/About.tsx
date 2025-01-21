@@ -104,7 +104,9 @@ const toolboxItems = [
 
 export const About = () => {
 
-    const {ref, inView} = useInView();
+    const {ref, inView} = useInView({
+        threshold: 0.90,
+    });
     const {setActiveSection} = useActiveSectionContext();
 
     useEffect(() => {

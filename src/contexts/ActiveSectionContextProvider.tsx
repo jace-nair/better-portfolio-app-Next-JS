@@ -2,8 +2,8 @@
 
 import { navLinks } from "@/lib/data";
 import { SectionName } from "@/lib/types";
-import { ActiveSectionContextProviderProps } from "@/lib/types";
-import { ActiveSectionContextType } from "@/lib/types";
+import type { ActiveSectionContextProviderProps } from "@/lib/types";
+import type { ActiveSectionContextType } from "@/lib/types";
 
 import { useState, createContext, useContext } from "react";
 

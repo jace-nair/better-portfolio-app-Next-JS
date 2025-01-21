@@ -31,7 +31,9 @@ const portfolioProjects = [
 
 export const Contact = () => {
 
-    const {ref, inView} = useInView();
+    const {ref, inView} = useInView({
+        threshold: 0.95,
+    });
     const {setActiveSection} = useActiveSectionContext();
 
     useEffect(() => {

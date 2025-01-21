@@ -54,7 +54,9 @@ const portfolioProjects = [
 
 export const ProjectsSection = () => {
 
-    const {ref, inView} = useInView();
+    const {ref, inView} = useInView({
+      threshold: 0.75,
+    });
     const {setActiveSection} = useActiveSectionContext();
 
     useEffect(() => {
