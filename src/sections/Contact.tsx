@@ -16,15 +16,9 @@ import { useEffect } from "react";
 
 const portfolioProjects = [
     {
-      company: "Acme Corp",
-      year: "2022",
-      title: "Dark Saas Landing Page",
-      results: [
-        { title: "Enhanced user experience by 40%" },
-        { title: "Improved site speed by 50%" },
-        { title: "Increased mobile traffic by 35%" },
-      ],
-      link: "https://youtu.be/4k7IdSLxh6w",
+      company: "Contact",
+      year: "Me",
+      title: "email@jacenair.com",
       image: darkSaasLandingPage,
     },
   ] as const;
@@ -51,6 +45,7 @@ export const Contact = () => {
                         <div>
                             <h2 className="font-serif text-2xl md:text-3xl">Let's create something amazing together</h2>
                             <p className="text-sm md:text-base mt-2">Ready to bring your next project to life? Let's connect and discuss how I can help you achieve your goals.</p>
+                            <p className="text-sm md:text-base mt-2">Please contact me directly at <a className="underline" href="mailto:email@jacenair.com">email@jacenair.com</a> or through this form.</p>
                         </div>
                         <div>
                             <button className="text-white bg-gray-900 inline-flex items-center px-6 h-12 rounded-xl gap-2 w-max border border-gray-900">
@@ -75,16 +70,15 @@ export const Contact = () => {
                                 </div>
                                 <h3 className="font-serif text-2xl mt-2 md:mt-5 md:text-4xl">{project.title}</h3>
                                 <hr className="border-t-2 border-white/5 mt-4 md:mt-5"/>
-                                <ul className="flex flex-col gap-4 mt-4 md:mt-5">{project.results.map(
-                                    result => 
-                                        <li key={result.title} className="flex gap-2 text-sm md:text-base text-white/50">
-                                            <CheckCircleIcon className="size-5 md:size-6"/>
-                                            <span>{result.title}</span>
-                                        </li>
-                                )}</ul>
-                                <a href ={project.link}>
-                                    <button className="bg-white text-gray-950 h-12 w-full md:w-auto px-6 rounded-xl font-semibold inline-flex items-center justify-center gap-2 mt-8"><span>Visit Live Site</span><ArrowUpRightIcon className="size-4"/></button>
-                                </a>
+                                
+                                
+                                <div className="text-gray-900 font-sans">
+                                    <form className="mt-10 flex flex-col" action="">
+                                        <input className="h-14 rounded-lg border border-black/10 p-4" type="email" />
+                                        <textarea className="h-52 my-3 rounded-lg border border-black/10 p-4" />
+                                        <button className="group bg-white transition-all text-gray-950 hover:text-gray-700 h-12 w-full md:w-auto px-6 rounded-xl font-semibold inline-flex items-center justify-center gap-2 mt-8" type="submit"><span>Submit</span><ArrowUpRightIcon className="size-4 group-hover:translate-x-1 group-hover:-translate-y-3"/></button>
+                                    </form>
+                                </div>
                             </div>
                             <div className="relative">
                               <Image src={project.image} alt={project.title} className="mt-8 -mb-4 md:-mb-0 lg:mt-0 lg:absolute lg:h-full lg:w-auto lg:max-w-none"/>
